@@ -32,8 +32,8 @@ const TitleWrapper = styled.div({
   fontWeight: "bold",
 });
 
-const Title = ({ tile }) => {
-  return <TitleWrapper>{tile}</TitleWrapper>;
+const Title = ({ title }) => {
+  return <TitleWrapper>{title}</TitleWrapper>;
 };
 
 const TaskWrapper = styled.div({
@@ -45,15 +45,11 @@ const TaskWrapper = styled.div({
   borderRadius: "0px 0px 10px 10px",
 });
 
-const Task = () => {
-  return (
-    <TaskWrapper>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem hic quia
-    </TaskWrapper>
-  );
+const Task = ({ task }) => {
+  return <TaskWrapper>{task}</TaskWrapper>;
 };
 
-function Card() {
+function Card({ title, task }) {
   const [modalActive, setModalActive] = useState(false);
   return (
     <>
@@ -62,8 +58,8 @@ function Card() {
           setModalActive(true);
         }}
       >
-        <Title tile={"Take over the world"} />
-        <Task />
+        <Title title={title} />
+        <Task task={task} />
       </CardWrapper>
       <TodoModal active={modalActive} setActive={setModalActive}></TodoModal>
     </>

@@ -16,20 +16,27 @@ const Wrap = styled.div({
   marginTop: 100,
 });
 
+const Arr = [
+  <Card title={"hell"} task={"AAAAAAAAAAAAAAAAA"} />,
+  <Card />,
+  <Card />,
+  <Card />,
+];
+
 function List() {
+  let todoArr = useSelector((state) => state.todo);
+  let TASK;
+  if (todoArr) {
+    TASK = todoArr.map((v, i) => {
+      console.log({ v }, { i });
+      return <Card title={todoArr[i].Title} task={todoArr[i].Task} />;
+    });
+  }
   console.log(useSelector((state) => state.todo));
   return (
     <Wrap>
       <ListWrapper>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {TASK}
         <AddCard />
       </ListWrapper>
     </Wrap>
